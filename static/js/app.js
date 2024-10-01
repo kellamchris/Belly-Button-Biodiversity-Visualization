@@ -1,17 +1,14 @@
 // Build the metadata panel
 function buildMetadata(sample) {
-  console.log("buildMetadata function called"); // Check if the function is being called
+  console.log("buildMetadata function called");
 
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
-    console.log(data);
 
     // get the metadata field
     let metadata = data.metadata;
-    console.log(metadata);
 
     // Filter the metadata for the object with the desired sample number
     let result = metadata.filter(obj => obj.id == sample)[0];
-    console.log(result);
 
     // Use d3 to select the panel with id of `#sample-metadata`
     let panel = d3.select("#sample-metadata");
@@ -96,26 +93,31 @@ function init() {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
 
     // Get the names field
+    let sampleNames = data.names;
 
     // Use d3 to select the dropdown with id of `#selDataset`
+    let dropdown = d3.select("#selDataset");
 
     // Use the list of sample names to populate the select options
     // Hint: Inside a loop, you will need to use d3 to append a new
     // option for each sample name.
-
+    sampleNames.forEach((sample) => {
+      dropdown.append("option").text(sample).property("value", sample);
+    });
 
     // Get the first sample from the list
+    let firstSample = sampleNames[0];
 
     // Build charts and metadata panel with the first sample
-    
+    buildCharts(firstSample);
+    buildMetadata(firstSample);
   });
 }
 
 // Function for event listener
-function optionChanged(newSample) {
+
   // Build charts and metadata panel each time a new sample is selected
-  
-}
+
 
 // Initialize the dashboard
 init();
