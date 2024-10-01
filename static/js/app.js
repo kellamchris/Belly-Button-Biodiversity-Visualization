@@ -55,8 +55,9 @@ function buildCharts(sample) {
     }];
 
     let bubbleLayout = {
-      title: "OTU IDs vs Sample Values",
+      title: "Bacteria Culture Per Sample",
       xaxis: { title: "OTU ID" },
+      yaxis: {title: "Number of Bacteria"},
       hovermode: "closest"
     };
 
@@ -77,7 +78,7 @@ function buildCharts(sample) {
     }];
 
     let barLayout = {
-      title: "Top 10 OTUs",
+      title: "Top 10 Bacteria Cultures Found",
       margin: { t: 30, l: 150 }
     };
     // Render the Bar Chart
@@ -115,9 +116,11 @@ function init() {
 }
 
 // Function for event listener
-
+function optionChanged(newSample) {
   // Build charts and metadata panel each time a new sample is selected
-
+  buildCharts(newSample);
+  buildMetadata(newSample);
+}
 
 // Initialize the dashboard
 init();
