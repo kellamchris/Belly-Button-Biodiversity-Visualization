@@ -45,4 +45,4 @@ Example:
 All the visualizations update when a new sample is selected from the dropdown menu. The dashboard automatically fetches the relevant data from the samples.json file and updates the charts and metadata accordingly.
 
 **4. Deployment**
-The completed dashboard is deployed to GitHub Pages. You can view the live project here: [https://kellamchris.github.io/belly_button_challenge/]
+The completed dashboard is deployed to GitHub Pages. You can view the live project here: [https://kellamchris.github.io/Belly-Button-Biodiversity-Visualization/]
